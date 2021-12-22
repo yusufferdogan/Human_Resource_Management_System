@@ -1,12 +1,10 @@
 package com.example.hrms.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -33,6 +31,11 @@ public class Experience {
         this.endDate = endDate;
         this.currentlyWorking = currentlyWorking;
     }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "experience_id",referencedColumnName = "id")
+    @JsonIgnore
+    Cv cv;
 
     @Override
     public boolean equals(Object o) {
