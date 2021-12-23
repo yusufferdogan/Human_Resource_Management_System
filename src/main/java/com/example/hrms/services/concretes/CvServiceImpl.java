@@ -104,6 +104,8 @@ public class CvServiceImpl implements CvService {
                 byteObjects[i++] = b;
             }
             cv.get().setImage(byteObjects);
+            repository.save(cv.get());
+            return cv.get();
         }
         return null;
     }
@@ -123,14 +125,15 @@ public class CvServiceImpl implements CvService {
     }
 
     @Override
-    public Cv addTechnology(Long id, Long technologyId) {
+    public Cv addTechnology(Long id, String name) {
         Optional<Cv> cv = repository.findById(id);
-        Optional<Technology> technology = technologyRepository.findById(technologyId);
-        if(cv.isPresent() && technology.isPresent()){
-            cv.get().getTechnologies().add(technology.get());
-            technology.get().setCv_of_technology(cv.get());
+        Technology technology = new Technology(name);
+        technologyRepository.save(technology);
+        if(cv.isPresent()){
+            cv.get().getTechnologies().add(technology);
+            technology.setCv_of_technology(cv.get());
             repository.save(cv.get());
-            technologyRepository.save(technology.get());
+            technologyRepository.save(technology);
             return  cv.get();
         }
         return null;

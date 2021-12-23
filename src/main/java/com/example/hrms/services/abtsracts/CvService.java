@@ -22,5 +22,5 @@ public interface CvService {
 
     Cv addExperience(Long id,Long experienceId);
 
-    Cv addTechnology(Long id,Long technologyId);
+    Cv addTechnology(Long id,String name);
 }

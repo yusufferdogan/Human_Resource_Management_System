@@ -3,7 +3,6 @@ package com.example.hrms.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;

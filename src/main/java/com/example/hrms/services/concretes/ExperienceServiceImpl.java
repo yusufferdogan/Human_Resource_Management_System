@@ -47,7 +47,8 @@ public class ExperienceServiceImpl implements ExperienceService {
         Optional<Experience> updated = repository.findById(id);
         if(updated.isPresent()){
             repository.deleteById(id);
+            return updated.get();
         }
-        return updated.get();
+        return null;
     }
 }

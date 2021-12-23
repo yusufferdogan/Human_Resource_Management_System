@@ -1,4 +1,5 @@
 package com.example.hrms.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,11 +24,14 @@ public class Cv {
     private String coverLetter;
 
     @Lob
+    @JsonIgnore
     private Byte[] image;
 
     @OneToMany(mappedBy = "cv")
+    @ToString.Exclude
     private Set<Experience> experiences = new HashSet<>();
 
     @OneToMany(mappedBy = "cv_of_technology")
+    @ToString.Exclude
     private Set<Technology> technologies = new HashSet<>();
 }
