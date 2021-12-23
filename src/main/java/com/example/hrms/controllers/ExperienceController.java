@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/experience")
 public class ExperienceController {
     
     private final ExperienceService experienceService;
@@ -21,7 +22,7 @@ public class ExperienceController {
     }
 
     @GetMapping
-    ResponseEntity<?> getAllCities(){
+    ResponseEntity<?> getAllExperiences(){
         SuccessDataResult<List<Experience>> results =  new SuccessDataResult<>
                 (this.experienceService.getAllExperience(),"All Cities Returned");
         return new ResponseEntity<>(results, HttpStatus.OK);

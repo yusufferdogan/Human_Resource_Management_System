@@ -1,11 +1,8 @@
 package com.example.hrms.models;
-
 import lombok.*;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,12 +18,16 @@ public class Cv {
     private String schoolName;
     private String department;
     private LocalDate graduationYear;
-//    experiences Experience
-//    image Image
     private String githubLink;
     private String stackOverFlowLink;
     private String coverLetter;
 
-    @OneToMany
-    private Set<Technology> technologies = new HashSet<>();
+    @Lob
+    private Byte[] image;
+
+    @OneToMany(mappedBy = "cv")
+    private Set<Experience> experiences = new HashSet<>();
+
+//    @OneToMany
+//    private Set<Technology> technologies = new HashSet<>();
 }
