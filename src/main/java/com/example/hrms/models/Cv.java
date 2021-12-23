@@ -28,6 +28,6 @@ public class Cv {
     @OneToMany(mappedBy = "cv")
     private Set<Experience> experiences = new HashSet<>();
 
-//    @OneToMany
-//    private Set<Technology> technologies = new HashSet<>();
+    @OneToMany(mappedBy = "cv_of_technology")
+    private Set<Technology> technologies = new HashSet<>();
 }

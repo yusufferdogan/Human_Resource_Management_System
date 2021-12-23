@@ -1,12 +1,10 @@
 package com.example.hrms.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -38,4 +36,9 @@ public class Technology {
     public int hashCode() {
         return getClass().hashCode();
     }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "technology_id",referencedColumnName = "id")
+    @JsonIgnore
+    Cv cv_of_technology;
 }

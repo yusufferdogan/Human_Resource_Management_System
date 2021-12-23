@@ -7,7 +7,9 @@ import com.example.hrms.services.abtsracts.CvService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -52,6 +54,24 @@ public class CvController {
         }
         SuccessDataResult<Cv> results =  new SuccessDataResult<>
                 (deleted,"Cv deleted");
+        return new ResponseEntity<>(results, HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}")
+    ResponseEntity<?> uploadPhoto(@PathVariable Long id,@RequestParam("image") MultipartFile file)  {
+        Cv cv = cvService.findById(id);
+        if(cv == null){
+            return new ResponseEntity<>(new ErrorResult("Cv does not exist"), HttpStatus.NOT_FOUND);
+        }
+        Cv updatedCv = null;
+        try {
+            updatedCv = this.cvService.uploadImage(id,file);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(new ErrorResult("I/O exception occurred"), HttpStatus.NOT_FOUND);
+        }
+        SuccessDataResult<Cv> results =  new SuccessDataResult<>
+                (updatedCv,"Cv Updated");
         return new ResponseEntity<>(results, HttpStatus.OK);
     }
 

@@ -2,7 +2,6 @@ package com.example.hrms.services.concretes;
 import com.example.hrms.models.City;
 import com.example.hrms.repositories.CityRepository;
 import com.example.hrms.services.abtsracts.CityService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
