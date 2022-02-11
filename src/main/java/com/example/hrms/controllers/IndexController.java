@@ -22,7 +22,7 @@ public class IndexController {
                      "/task_masters\n";
         SuccessDataResult<String> results =  new SuccessDataResult<>
                 (str,"Root Page");
-        return new ResponseEntity<>(results, HttpStatus.OK);
+        return new ResponseEntity<>(str, HttpStatus.OK);
     }
 
     @GetMapping("/error")
@@ -31,6 +31,6 @@ public class IndexController {
                      "https://human-resources-spring-boot.herokuapp.com\n";
         SuccessDataResult<String> results =  new SuccessDataResult<>
                 (str,"Root Page");
-        return new ResponseEntity<>(results, HttpStatus.OK);
+        return new ResponseEntity<>(str, HttpStatus.OK);
     }
 }
