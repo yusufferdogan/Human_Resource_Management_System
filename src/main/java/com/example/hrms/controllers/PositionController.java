@@ -29,7 +29,7 @@ public class PositionController {
     @PostMapping
     ResponseEntity<?> addPosition(@RequestBody Position position){
         if(positionService.isExistByName(position.getJobTitle())){
-            return new ResponseEntity<>(new ErrorResult("City already Exist"), HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<>(new ErrorResult("position already Exist"), HttpStatus.NOT_ACCEPTABLE);
         }
         SuccessDataResult<Position> results =  new SuccessDataResult<>
                 (this.positionService.savePosition(position),"New City Added");
