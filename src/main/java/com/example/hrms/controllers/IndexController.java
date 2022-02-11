@@ -11,17 +11,15 @@ public class IndexController {
 
     @GetMapping({"","/"})
     ResponseEntity<?> getIndex() {
-        String str = """
-                Welcome to HRMS Spring application
-                Valid Commands
-                /positions
-                /candidates
-                /cities
-                /cv
-                /experience
-                /job_advertisement
-                /task_masters
-                """;
+        String str = "Welcome to HRMS Spring application\n" +
+                     "Valid Commands\n" +
+                     "/positions\n" +
+                     "/candidates\n" +
+                     "/cities\n" +
+                     "/cv\n" +
+                     "/experience\n" +
+                     "/job_advertisement\n" +
+                     "/task_masters\n";
         SuccessDataResult<String> results =  new SuccessDataResult<>
                 (str,"Root Page");
         return new ResponseEntity<>(results, HttpStatus.OK);
@@ -29,10 +27,8 @@ public class IndexController {
 
     @GetMapping("/error")
     ResponseEntity<?> getError() {
-        String str = """
-                An Error occured please go to
-                https://human-resources-spring-boot.herokuapp.com
-                """;
+        String str = "An Error occured please go to\n" +
+                     "https://human-resources-spring-boot.herokuapp.com\n";
         SuccessDataResult<String> results =  new SuccessDataResult<>
                 (str,"Root Page");
         return new ResponseEntity<>(results, HttpStatus.OK);
