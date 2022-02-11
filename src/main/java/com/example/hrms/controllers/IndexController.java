@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     @GetMapping("")
-    String getIndex(){
+    String getIndex() {
         return """
                 Welcome to HRMS Spring application
                 Valid Commands
@@ -19,6 +19,14 @@ public class IndexController {
                 /job_advertisement
                 /task_masters
                  
+                """;
+    }
+
+    @GetMapping("/error")
+    String getError() {
+        return """
+                An Error occured please go to
+                 https://human-resources-spring-boot.herokuapp.com
                 """;
     }
 }
